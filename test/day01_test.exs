@@ -33,6 +33,6 @@ defmodule Day01.Test do
 
   test "day 2 part 2" do
     {:ok, content} = File.read("test/day01_input.txt")
-    assert Day01.find_most_calories(content, 3) === 203420
+    assert Day01.find_most_calories(content, 3) === 203_420
   end
 end
