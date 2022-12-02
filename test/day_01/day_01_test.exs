@@ -23,7 +23,7 @@ defmodule Day01.Test do
   end
 
   test "day 1 part 1" do
-    {:ok, content} = File.read("test/day01_input.txt")
+    {:ok, content} = File.read("test/day_01/day_01_input.txt")
     assert Day01.find_most_calories(content) === 68467
   end
 
@@ -32,7 +32,7 @@ defmodule Day01.Test do
   end
 
   test "day 2 part 2" do
-    {:ok, content} = File.read("test/day01_input.txt")
+    {:ok, content} = File.read("test/day_01/day_01_input.txt")
     assert Day01.find_most_calories(content, 3) === 203_420
   end
 end
