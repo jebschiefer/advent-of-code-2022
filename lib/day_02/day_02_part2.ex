@@ -1,4 +1,4 @@
-defmodule Day02 do
+defmodule Day02.Part2 do
   def calculate_score(input) do
     input
     |> String.split("\n", trim: true)
@@ -18,21 +18,29 @@ defmodule Day02 do
       "A" -> :rock
       "B" -> :paper
       "C" -> :scissors
-      "X" -> :rock
-      "Y" -> :paper
-      "Z" -> :scissors
+      "X" -> :lose
+      "Y" -> :tie
+      "Z" -> :win
     end
   end
 
   def round_score(matchup) do
     opponent = Enum.at(matchup, 0)
-    player = Enum.at(matchup, 1)
+    needed_outcome = Enum.at(matchup, 1)
 
     move_values = %{
       :rock => 1,
       :paper => 2,
       :scissors => 3
     }
+
+    should_play = %{
+      :win => &win/1,
+      :lose => &lose/1,
+      :tie => &tie/1
+    }
+
+    player = should_play[needed_outcome].(opponent)
 
     round_base = move_values[player]
 
@@ -48,6 +56,30 @@ defmodule Day02 do
       :win -> round_base + 6
       :lose -> round_base
       :tie -> round_base + 3
+    end
+  end
+
+  def win(against) do
+    case against do
+      :rock -> :paper
+      :paper -> :scissors
+      :scissors -> :rock
+    end
+  end
+
+  def lose(against) do
+    case against do
+      :rock -> :scissors
+      :paper -> :rock
+      :scissors -> :paper
+    end
+  end
+
+  def tie(against) do
+    case against do
+      :rock -> :rock
+      :paper -> :paper
+      :scissors -> :scissors
     end
   end
 
