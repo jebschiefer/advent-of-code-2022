@@ -8,6 +8,6 @@ defmodule Day02.Test do
 
   test "day 2 part 1" do
     {:ok, input} = File.read("test/day_02/day_02_input.txt")
-    assert Day02.calculate_score(input) === 15
+    assert Day02.calculate_score(input) === 10994
   end
 end
