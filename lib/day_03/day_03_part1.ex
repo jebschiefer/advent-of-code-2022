@@ -1,4 +1,4 @@
-defmodule Day03 do
+defmodule Day03.Part1 do
   def sum_priorities(input) do
     input
     |> String.split("\n", trim: true)
