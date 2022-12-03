@@ -18,6 +18,6 @@ defmodule Day03.Test do
 
   test "day 3 part 2" do
     {:ok, input} = File.read("test/day_03/day_03_input.txt")
-    assert Day03.Part2.sum_priorities(input) === -1
+    assert Day03.Part2.sum_priorities(input) === 2681
   end
 end
