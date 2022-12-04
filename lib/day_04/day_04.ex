@@ -6,6 +6,8 @@ defmodule Day04 do
       String.split(x, ",", trim: true) |> Enum.map(&create_assignment_from_range/1)
     end)
     |> Enum.map(&fully_contained_assigment?/1)
+    |> Enum.map(&boolean_to_integer/1)
+    |> Enum.sum()
   end
 
   def create_assignment_from_range(range) do
@@ -27,5 +29,9 @@ defmodule Day04 do
     |> Enum.reduce(fn x, acc ->
       MapSet.subset?(MapSet.new(x), MapSet.new(acc))
     end)
+  end
+
+  defp boolean_to_integer(bool) do
+    if bool, do: 1, else: 0
   end
 end
