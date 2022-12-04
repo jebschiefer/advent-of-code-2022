@@ -26,4 +26,24 @@ defmodule Day04.Test do
   test "create_assignment_from_range should handle range assignment" do
     assert Day04.create_assignment_from_range("1-6") === [1, 2, 3, 4, 5, 6]
   end
+
+  test "fully_contained_assigment? should return false (no intersection)" do
+    assignment_group = [[1, 2, 3], [4, 5, 6]]
+    assert Day04.fully_contained_assigment?(assignment_group) === false
+  end
+
+  test "fully_contained_assigment? should return false (intersection)" do
+    assignment_group = [[1, 2, 3, 4], [4, 5, 6]]
+    assert Day04.fully_contained_assigment?(assignment_group) === false
+  end
+
+  test "fully_contained_assigment? should return false (left contains right)" do
+    assignment_group = [[1, 2, 3, 4], [2, 3]]
+    assert Day04.fully_contained_assigment?(assignment_group) === true
+  end
+
+  test "fully_contained_assigment? should return false (right contains left)" do
+    assignment_group = [[2, 3], [1, 2, 3, 4]]
+    assert Day04.fully_contained_assigment?(assignment_group) === true
+  end
 end
