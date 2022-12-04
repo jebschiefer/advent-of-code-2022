@@ -17,12 +17,12 @@ defmodule Day04.Test do
 
   test "day 4 part 2 example" do
     {:ok, input} = File.read("test/day_04/day_04_sample.txt")
-    assert Day04.count_covered_assignments(input) === 4
+    assert Day04.count_covered_assignments(input, false) === 4
   end
 
   test "day 4 part 2" do
     {:ok, input} = File.read("test/day_04/day_04_input.txt")
-    assert Day04.count_covered_assignments(input) === -1
+    assert Day04.count_covered_assignments(input, false) === 928
   end
 
   ###
